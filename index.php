@@ -1,81 +1,28 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="container">
+  
+  <h1>Photo gallery</h1>
+  <div class="gallery">
+    <?php
+    include "gallery.php";
+    ?>
+  </div>
 
-abstract class Product {
+  <form action="server.php" method="post" enctype="multipart/form-data">
+    <p>Загрузить файл</p>
+    <input type="file" name="photo">
+    <input type="submit" name="send" value="Сохранить">
+  </form>
 
-  const TAX = 0.13;      // налог с продаж
-  const OVERPRICE = 0.3; // наценка на товар (уже включена в цену)
-
-  abstract public function getPrice();
-
-  abstract public function getFinalPrice();
-
-  public function countProfit() {
-    return $this->getFinalPrice() * (1 - self::TAX) * self::OVERPRICE;
-  }
-
-}
-
-
-class DigitalProduct extends Product {
-
-  const PRICE = 1000;
-  private $quantity;    // кол-во товара
-
-  public function __construct(int $quantity) {
-    $this->quantity = $quantity;
-  }
-
-  public function getPrice() {
-    return self::PRICE;
-  }
-
-  public function getQuantity() {
-    return $this->quantity;
-  }
-
-  public function getFinalPrice() {
-    return self::PRICE * $this->quantity;
-  }
-
-}
-
-class PieceProduct extends DigitalProduct {
-
-  public function getPrice() {
-    return parent::PRICE * 2;
-  }
-
-  public function getFinalPrice() {
-    return $this->getPrice() * $this->getQuantity();
-  }
-
-
-}
-
-class WeightProduct extends Product {
-
-  private $price;
-  private $amount;
-
-  public function __construct(float $price, float $amount) {
-    $this->price = $price;
-    $this->amount = $amount;
-  }
-
-  public function getPrice() {
-    return $this->price;
-  }
-
-  public function getFinalPrice() {
-    return $this->price * $this->amount;
-  }
-}
-
-$pr = new DigitalProduct(5);
-echo 'Final profit of digital product is: ' . $pr->countProfit() . PHP_EOL;
-
-$pr = new PieceProduct(5);
-echo 'Final profit of piece product is: ' . $pr->countProfit() . PHP_EOL;
-
-$pr = new WeightProduct(1000, 5);
-echo 'Final profit of weight product is: ' . $pr->countProfit() . PHP_EOL;
+</div>
+  
+</body>
+</html>
