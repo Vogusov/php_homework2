@@ -6,7 +6,6 @@
   foreach ($items as $item):
   ?>
   <div style="border: 1px solid black">
-    <p><?= "{$item['name']} {$item['id']}" ?></p>
   </div>
 
   <?php endforeach; ?>
