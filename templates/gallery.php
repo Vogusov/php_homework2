@@ -1,14 +1,18 @@
 <h1><?= $title ?></h1>
+
 <div class="gallery">
 
   <?php
-  foreach ($images as $image):
+  foreach ($items as $item):
   ?>
-    <a href="/controllers/image.php?id=<?= $image['id']; ?>" class="gallery__item">
-      <img src="<?= SMALL_IMAGES_FOLDER . $image['name']; ?>" alt="">
-    </a>
+  <div style="border: 1px solid black">
+    <p><?= $item['id'] ?></p>
+    <p><?= $item['name'] ?></p>
+  </div>
 
   <?php endforeach; ?>
+  
+  <a href="../controllers/index.php?show=<?= $count + $defaultGoodsCount ?>">Show more <?= $defaultGoodsCount ?>></a>
 
 </div>
 
