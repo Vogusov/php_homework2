@@ -3,8 +3,40 @@
 include '../models/templater.php';
 include '../models/config.php';
 
-$title = 'Галлерея';
-$images = getImages($connect);
-
+$title = 'LESSON 4';
 $template = '../templates/gallery.php';
 $mainTemplate = '../templates/main.php';
+
+$defaultGoodsCount = 5;
+
+if (isset($_GET['show'])){
+  $limit = $_GET['show'];
+} else {
+  $limit = $defaultGoodsCount;
+}
+
+
+$items = getItems($connect, $limit);
+//print_r($items);
+
+$count = count($items);
+
+// Внутренний шаблон
+$content = Templater($template, [
+  'title' => $title,
+  'items' => $items,
+  'count' => $count,
+  'defaultGoodsCount' => $defaultGoodsCount,
+]);
+
+// Внешний шаблон
+$page = Templater($mainTemplate, [
+  'content' => $content
+]);
+
+//Вывод страницы на экран:
+echo $page;
+
+
+
+
