@@ -1,42 +1,31 @@
 <?php
 
-include '../models/templater.php';
-include '../models/config.php';
+include 'twig.php';
+include 'config.php';
 
 $title = 'LESSON 4';
-$template = '../templates/gallery.php';
-$mainTemplate = '../templates/main.php';
-
 $defaultGoodsCount = 5;
 
-if (isset($_GET['show'])){
+if (isset($_GET['show'])) {
   $limit = $_GET['show'];
 } else {
   $limit = $defaultGoodsCount;
 }
 
-
 $items = getItems($connect, $limit);
+$count = count($items);
 //print_r($items);
 
-$count = count($items);
 
-// Внутренний шаблон
-$content = Templater($template, [
-  'title' => $title,
-  'items' => $items,
-  'count' => $count,
-  'defaultGoodsCount' => $defaultGoodsCount,
-]);
-
-// Внешний шаблон
-$page = Templater($mainTemplate, [
-  'content' => $content
-]);
-
-//Вывод страницы на экран:
-echo $page;
-
-
-
-
+try {
+  $data = [
+    'title' => $title,
+    'items' => $items,
+    'count' => $count,
+    'defaultGoodsCount' => $defaultGoodsCount,
+  ];
+  $template = $twig->render('main.tmpl', $data);
+  echo $template;
+} catch (Exception $e) {
+  'Error: ' . $e->getMessage();
+}

@@ -12,7 +12,7 @@ function getItems($connect, $limit) {
   $res = mysqli_query($connect, $str);
   if (!$res)
     die(mysqli_error($connect));
-  while ($item = mysqli_fetch_assoc($res)){
+  while ($item = mysqli_fetch_assoc($res)) {
     $items[] = $item;
   }
 

@@ -1,0 +1,16 @@
+{
+  "name": "vendor_name/hwphp2",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Ditrich",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "twig/twig": "2.14.0",
+    "ext-mysqli": "*"
+  }
+}
