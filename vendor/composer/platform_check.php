@@ -10,6 +10,7 @@ if (!(PHP_VERSION_ID >= 70205)) {
 
 $missingExtensions = array();
 extension_loaded('mysqli') || $missingExtensions[] = 'mysqli';
+extension_loaded('pdo') || $missingExtensions[] = 'pdo';
 
 if ($missingExtensions) {
     $issues[] = 'Your Composer dependencies require the following PHP extensions to be installed: ' . implode(', ', $missingExtensions);

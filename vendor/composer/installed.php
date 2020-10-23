@@ -6,28 +6,28 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'fd3bf29bf2949c15325770f13e16816a2e8d27a8',
+    'reference' => 'c9f654a581af7a3213b3c1925ad629d6e3a65d9f',
     'name' => 'vendor_name/hwphp2',
   ),
   'versions' => 
   array (
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'v1.18.1',
-      'version' => '1.18.1.0',
+      'pretty_version' => 'v1.19.0',
+      'version' => '1.19.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1c302646f6efc070cd46856e600e5e0684d6b454',
+      'reference' => 'aed596913b70fae57be53d86faa2e9ef85a2297b',
     ),
     'symfony/polyfill-mbstring' => 
     array (
-      'pretty_version' => 'v1.18.1',
-      'version' => '1.18.1.0',
+      'pretty_version' => 'v1.19.0',
+      'version' => '1.19.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a6977d63bf9a0ad4c65cd352709e230876f9904a',
+      'reference' => 'b5f7b932ee6fa802fc792eabd77c4c88084517ce',
     ),
     'twig/twig' => 
     array (
@@ -45,7 +45,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'fd3bf29bf2949c15325770f13e16816a2e8d27a8',
+      'reference' => 'c9f654a581af7a3213b3c1925ad629d6e3a65d9f',
     ),
   ),
 );
