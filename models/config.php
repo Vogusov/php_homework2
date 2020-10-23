@@ -24,11 +24,11 @@ try {
 
 function getItems($pdo, $limit) {
 
-    $sth = $pdo->prepare("select * from `goods` limit :limit");
-    $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $sth->execute();
-    $items = $sth->fetchAll(PDO::FETCH_ASSOC);
-    return $items;
+  $sth = $pdo->prepare("select * from `goods` limit :limit");
+  $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+  $sth->execute();
+  $items = $sth->fetchAll(PDO::FETCH_ASSOC);
+  return $items;
 }
 
 

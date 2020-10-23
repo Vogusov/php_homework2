@@ -1,10 +1,9 @@
 <?php
-include 'templater.php';
+include 'twig.php';
 include 'config.php';
 
 $title = 'LESSON 4';
-$template = '../templates/gallery.php';
-$mainTemplate = '../templates/main.php';
+$mainTemplate = 'main.tmpl';
 $defaultGoodsCount = 5;
 
 
@@ -18,24 +17,17 @@ try {
   $items = getItems($pdo, $limit);
   $count = count($items);
 
-  // Внутренний шаблон
-  $content = Templater($template, [
+  $data = [
     'title' => $title,
     'items' => $items,
     'count' => $count,
     'defaultGoodsCount' => $defaultGoodsCount,
-  ]);
-
-// Внешний шаблон
-  $page = Templater($mainTemplate, [
-    'content' => $content
-  ]);
-
-//Вывод страницы на экран:
-  echo $page;
+  ];
+  $template = $twig->render('main.tmpl', $data);
+  echo $template;
 
 } catch (Exception $e) {
-  die ('ERRORRRR: '.$e->getMessage());
+  die ('Error in gallery templating: '.$e->getMessage());
 }
 
 
