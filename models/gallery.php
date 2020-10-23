@@ -1,13 +1,12 @@
 <?php
-
-include '../models/templater.php';
-include '../models/config.php';
+include 'templater.php';
+include 'config.php';
 
 $title = 'LESSON 4';
 $template = '../templates/gallery.php';
 $mainTemplate = '../templates/main.php';
-
 $defaultGoodsCount = 5;
+
 
 try {
   if (isset($_GET['show'])){
@@ -17,8 +16,6 @@ try {
   }
 
   $items = getItems($pdo, $limit);
-//print_r($items);
-
   $count = count($items);
 
   // Внутренний шаблон
@@ -36,6 +33,7 @@ try {
 
 //Вывод страницы на экран:
   echo $page;
+
 } catch (Exception $e) {
   die ('ERRORRRR: '.$e->getMessage());
 }
