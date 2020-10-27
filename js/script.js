@@ -1,10 +1,7 @@
 $('#jsShowMore').click(function (e) {
   e.preventDefault();
-  console.log('click');
   let show = $('#jsShowMore').attr('data-show')
-  // let content = $('#content')
-  console.log('show: ' + show)
-
+  $('#jsShowMore').attr('data-show', 5 + parseInt(show))
 
   $.ajax({
     type: 'POST',
@@ -12,10 +9,7 @@ $('#jsShowMore').click(function (e) {
     data: {SHOW: show},
     success: function(data){
       console.log(data)
-
-      // $('#content').html(data);
-      $('#gallery').html(data);
+      $('#gallery').html(data)
     }
   })
-
 })

@@ -26,8 +26,9 @@ try {
 function getItems($pdo, $limit) {
 
   $sth = $pdo->prepare("select * from `goods` limit :limit");
-  $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
-  $sth->execute();
+//  $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+//  $sth->execute();
+  $sth->execute([':limit'=>$limit]);
   $items = $sth->fetchAll(PDO::FETCH_ASSOC);
   return $items;
 }
