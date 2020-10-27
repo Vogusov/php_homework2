@@ -1,19 +1,10 @@
 <h1>{{ title }}</h1>
 
-<div class="gallery">
-
-
-    {% for item in items %}
-
-        <div style="border: 1px solid black">
-            <p>{{ item.name }} {{ item.id }}</p>
-        </div>
-
-    {% endfor %}
-
-
-    <a id="jsShowMore" data-show="{{ count + defaultGoodsCount }}" href="#">Show more {{ defaultGoodsCount }} ></a>
-
+<div id="gallery" class="gallery">
+  
+  {{ include('gallery_content.html') }}
 
 </div>
+
+<a id="jsShowMore" data-show="{{ count + defaultGoodsCount }}" href="#">Show more {{ defaultGoodsCount }} ></a>
 

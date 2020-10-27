@@ -1,4 +1,4 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/models/gallery.php';
+include __DIR__ . '/../models/gallery.php';
 

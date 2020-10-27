@@ -1,9 +1,10 @@
 $('#jsShowMore').click(function (e) {
-  e.preventDefault()
-  alert('JS RULES!')
+  e.preventDefault();
+  console.log('click');
   let show = $('#jsShowMore').attr('data-show')
   // let content = $('#content')
   console.log('show: ' + show)
+
 
   $.ajax({
     type: 'POST',
@@ -11,7 +12,10 @@ $('#jsShowMore').click(function (e) {
     data: {SHOW: show},
     success: function(data){
       console.log(data)
-      $('#content').html(data);
+
+      // $('#content').html(data);
+      $('#gallery').html(data);
     }
   })
+
 })

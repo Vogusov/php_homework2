@@ -5,7 +5,7 @@ include 'config.php';
 
 $title = 'LESSON 4';
 $mainTemplate = 'main.html';
-$galleryTemplate = 'gallery.html';
+$galleryTemplate = 'gallery_content.html';
 $defaultGoodsCount = 5;
 
 
@@ -14,12 +14,14 @@ if (isset($_POST['SHOW'])) {
     $limit = $_POST['SHOW'];
     $items = getItems($pdo, $limit);
     $count = count($items);
+//    $newLimit = $count + $defaultGoodsCount;
 
     $data = [
       'title' => $title,
       'items' => $items,
-      'count' => $count,
-      'defaultGoodsCount' => $defaultGoodsCount,
+//      'newLimit' => $newLimit,
+//      'count' => $count,
+//      'defaultGoodsCount' => $defaultGoodsCount,
     ];
     $template = $twig->render($galleryTemplate, $data);
     echo $template;
