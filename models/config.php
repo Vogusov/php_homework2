@@ -4,10 +4,10 @@ const SERVER = 'localhost';
 const DB = 'testing';
 const LOGIN = 'root';
 const PASS = 'root';
-const CHARSET = 'utf8';
+const CHARSET = 'UTF8';
 
 
-$dsn = 'mysql:host=' . SERVER . ';dbname=' . DB . 'charset=' . CHARSET;
+$dsn = 'mysql:host=' . SERVER . ';dbname=' . DB . ';charset=' . CHARSET;
 $opt = [
   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
   PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -16,7 +16,8 @@ $opt = [
 
 
 try {
-  $pdo = new PDO('mysql:host=' . SERVER . ';dbname=' . DB, LOGIN, PASS, $opt);
+//  $pdo = new PDO('mysql:host=' . SERVER . ';dbname=' . DB, LOGIN, PASS, $opt);
+  $pdo = new PDO($dsn, LOGIN, PASS, $opt);
 } catch (PDOException $e) {
   /* так делать не надо */
   die('PDO connection error: ' . $e->getMessage());
@@ -24,11 +25,11 @@ try {
 
 
 function getItems($pdo, $limit) {
-
-  $sth = $pdo->prepare("select * from `goods` limit :limit");
+  $sql = "select * from `goods` limit :limit";
+  $sth = $pdo->prepare($sql);
 //  $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
 //  $sth->execute();
   $sth->execute([':limit'=>$limit]);
-  $items = $sth->fetchAll(PDO::FETCH_ASSOC);
+  $items = $sth->fetchAll();
   return $items;
 }

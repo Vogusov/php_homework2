@@ -14,17 +14,15 @@ if (isset($_POST['SHOW'])) {
     $limit = $_POST['SHOW'];
     $items = getItems($pdo, $limit);
     $count = count($items);
-//    $newLimit = $count + $defaultGoodsCount;
 
     $data = [
       'title' => $title,
       'items' => $items,
-//      'newLimit' => $newLimit,
-//      'count' => $count,
-//      'defaultGoodsCount' => $defaultGoodsCount,
     ];
+
     $template = $twig->render($galleryTemplate, $data);
     echo $template;
+
   } catch (Exception $e) {
     die('Error in gallery templating: ' . $e->getMessage());
   }
@@ -43,6 +41,7 @@ if (isset($_POST['SHOW'])) {
       'count' => $count,
       'defaultGoodsCount' => $defaultGoodsCount,
     ];
+
     $template = $twig->render($mainTemplate, $data);
     echo $template;
 
